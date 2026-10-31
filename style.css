@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* Latar belakang gradasi pink dengan motif polkadot putih */
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffffff 100%),
+                radial-gradient(white 15%, transparent 16%);
+    background-size: 100% 100%, 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+h1 {
+    color: #d63384;
+    margin-bottom: 10px;
+    font-size: 26px;
+    text-align: center;
+    animation: pulseText 1.5s infinite alternate;
+}
+
+@keyframes pulseText {
+    0% { transform: scale(1); text-shadow: 0 0 5px rgba(214,51,132,0.2); }
+    100% { transform: scale(1.08); text-shadow: 0 0 15px rgba(214,51,132,0.6); }
+}
+
+.game-container {
+    position: relative;
+}
+
+canvas {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+/* Tombol Click Me! dengan efek Transisi Fade */
+#clickMeBtn {
+    position: absolute;
+    bottom: 85px;
+    padding: 12px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #ff416c, #ffa2d3);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease;
+    z-index: 10;
+    opacity: 0; /* Mulai dari transparan (hidden secara visual) */
+}
+
+#clickMeBtn.show {
+    opacity: 1; /* Muncul perlahan (fade-in) */
+}
+
+#clickMeBtn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
+}
+
+.btn-hidden {
+    display: none !important;
+}
+
+/* Pop-up Notes Styling */
+#notePopup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: opacity 0.3s ease;
+}
+
+.popup-hidden {
+    display: none !important;
+}
+
+.popup-content {
+    background: #fff0f5;
+    padding: 35px 30px;
+    border-radius: 20px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 3px solid #ffb6c1;
+    animation: popupScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popupScale {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.popup-content h2 {
+    color: #d63384;
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.popup-content p {
+    color: #444;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+#closeBtn {
+    background: #d63384;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#closeBtn:hover {
+    background: #c2185b;
+}
